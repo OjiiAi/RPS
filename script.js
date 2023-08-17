@@ -10,6 +10,18 @@ function getComputerChoice() {
         return "scissors"
     }
 }
+
+function getPlayerChoice(){
+    let choice = prompt("Choose Your Fighter: Rock, Paper, Scissors")
+    if (choice.toLowerCase() === 'rock') {
+        return 'rock';
+    } else if (choice.toLowerCase() === 'paper') {
+        return 'paper';
+    } else {
+        return 'scissors'
+    }
+}
+
 // Function of playRound that gets the parameters playerSelection and computerSelection.
 // That plays a single round and declares and returns the winner.
 // Also make it accept values of upper or lower case
@@ -19,8 +31,8 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
 
-    while (playerScore < 5 && computerScore < 5) {
-        const playerSelection = "rock".toLowerCase();
+    do {
+        const playerSelection = getPlayerChoice().toLowerCase();
         const computerSelection = getComputerChoice().toLowerCase();
         
         function playRound(playerSelection, computerSelection) {
@@ -35,12 +47,18 @@ function game() {
                 return `You Tied Both Chose ${playerSelection}`
             }
            
-        }
+            
+        } 
         console.log(playRound(playerSelection, computerSelection));
-        console.log(playerScore);
-        console.log(computerScore); 
         
+    } while (playerScore < 5 && computerScore < 5);
+
+    if(playerScore > computerScore) {
+        console.log("You Win!")
+    } else {
+        console.log("You Lose")
     }
+
 
 }
 game();
