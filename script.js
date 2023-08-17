@@ -10,25 +10,26 @@ function getComputerChoice() {
         return "scissors"
     }
 }
-
 // Function of playRound that gets the parameters playerSelection and computerSelection.
 // That plays a single round and declares and returns the winner.
 // Also make it accept values of upper or lower case
 let playerSelection = "rock".toLowerCase();
 let computerSelection = getComputerChoice().toLowerCase();
+let playerScore = 0;
+let computerScore = 0;
+let gameScore = 5;
 
 
-function playRound(playerSelection, computerSelection) {
-   if(playerSelection === 'rock' && computerSelection === 'scissors') {
-        return `You Win! ${playerSelection} beats ${computerSelection}`; 
-   } else if(computerSelection === 'paper' && playerSelection === 'rock') {
-        return `You Lose! ${computerSelection} beats ${playerSelection}`; 
-   } else {
-        return `You Tied Both Chose ${playerSelection}`
-   }
+function game() {
+    function playRound(playerSelection, computerSelection) {
+        if(playerSelection === 'rock' && computerSelection === 'scissors') {
+            playerScore++;
+            return `You Win! ${playerSelection} beats ${computerSelection}`; 
+        } else if(computerSelection === 'paper' && playerSelection === 'rock') {
+            computerScore++;
+            return `You Lose! ${computerSelection} beats ${playerSelection}`; 
+        } else {
+            return `You Tied Both Chose ${playerSelection}`
+        }
+    }
 }
-console.log(playRound(playerSelection, computerSelection))
-
-// Function of game where playRound is inside of game.
-// This function would play 5 rounds, keeps score, reports a winner or loser.
-
